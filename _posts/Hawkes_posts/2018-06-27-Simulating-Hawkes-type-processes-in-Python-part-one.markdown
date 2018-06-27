@@ -97,6 +97,7 @@ in plotting the rescaled intensity.
 
 ![image tooltip here](assets/h1_image.PNG)
 ![your image]({{ "/assets/h1_image.jpg" | absolute_url}})
+<img src="{{ site.baseurl }}/assets/h1_image.jpg">
 
 Do not work
 
