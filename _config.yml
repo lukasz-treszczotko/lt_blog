@@ -17,7 +17,7 @@ title: "Personal webpage/blog"
 email: lukasz.treszczotko@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Research notes, code and ideas.
-baseurl: "lt_blog" # the subpath of your site, e.g. /blog
+baseurl: "/lt_blog" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 github_username:  lukasz-treszczotko
