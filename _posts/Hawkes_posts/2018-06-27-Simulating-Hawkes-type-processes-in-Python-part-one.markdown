@@ -98,7 +98,7 @@ in plotting the rescaled intensity.
 
 
 
-![image](/assets/h1_image.png)
+
 ![image]({{ site.baseurl }}/assets/h1_image.png)
 
 
