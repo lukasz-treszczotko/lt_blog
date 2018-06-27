@@ -96,8 +96,8 @@ intensity. Since the picture is automatically rescaled by matplotlib there is no
 in plotting the rescaled intensity.
 
 ![image tooltip here](/assets/h1_image.png)
-![your image]({{ "/assets/h1_image.png" | absolute_url}})
-<img src="{{ site.baseurl }}/assets/h1_image.png">
+
+
 ![image](/assets/h1_image.png)
 Do not work
 
