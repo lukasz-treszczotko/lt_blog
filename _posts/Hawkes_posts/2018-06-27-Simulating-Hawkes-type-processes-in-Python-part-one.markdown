@@ -95,13 +95,9 @@ to set it to a very large number. Below we plot a sample path taken by the
 intensity. Since the picture is automatically rescaled by matplotlib there is no point
 in plotting the rescaled intensity.
 
-
-
-
-
 ![image]({{ site.baseurl }}/assets/h1_image.png)
 
-
+The limit process turns out to be the celebrated CIR (Cox-Ingresoll-Ross) process. 
 
 
 <script type="text/javascript" async
