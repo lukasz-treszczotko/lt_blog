@@ -10,3 +10,7 @@ You can find my CV here [CV]({{ site.baseurl }}/assets/cv.pdf).
 My arXiv profile is
 
 <https://arxiv.org/search/?searchtype=author&query=Treszczotko%2C+%C5%81>
+
+I am always trying hard ... as in this picture:)
+
+![image]({{ site.baseurl }}/assets/trying_hard.jpg)
