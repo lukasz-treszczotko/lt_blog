@@ -95,8 +95,8 @@ to set it to a very large number. Below we plot a sample path taken by the
 intensity. Since the picture is automatically rescaled by matplotlib there is no point
 in plotting the rescaled intensity.
 
-![image tooltip here](/assets/h1_image.PNG)
-![your image]({{ site.url }}/assets/h1_image.PNG)
+![image tooltip here](/_assets/h1_image.PNG)
+![your image]({{ site.url }}/_assets/h1_image.png)
 
 
 
