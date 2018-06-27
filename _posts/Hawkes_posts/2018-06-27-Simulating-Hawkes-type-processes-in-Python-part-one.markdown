@@ -1,5 +1,6 @@
 ---
 permalink: /probability/hawkes/
+categories: Probability
 
 ---
 
@@ -97,7 +98,7 @@ in plotting the rescaled intensity.
 
 ![image]({{ site.baseurl }}/assets/h1_image.png)
 
-The limit process turns out to be the celebrated CIR (Cox-Ingresoll-Ross) process. 
+The limit process turns out to be the celebrated CIR (Cox-Ingresoll-Ross) process.
 
 
 <script type="text/javascript" async
