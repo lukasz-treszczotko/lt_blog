@@ -27,8 +27,6 @@ latant variable space that is a discretized version of a standard Brownian
 motion. In the simple setting here, let a neural network with two hidden
 layers learn the latent representation.
 
-ENCODER DECODER
-
 The encoder-decoder structure we use is relatively simple. The encoder is
 standard.
 
@@ -89,7 +87,18 @@ def sample_generator():
 {% endhighlight %}
 
 Whole code can be seen [here](https://github.com/lukasz-treszczotko/GNE/blob/master/fbm_sota.py).
+Here are sample paths generated for Hurst coefficient {% raw %} $$H=0.7$$
+{% endraw %} (after a considerable fine-tuning of the
+parameters and at the same time computing log probability on the testing
+set to prevent overfitting).
 
+![image]({{ site.baseurl }}/assets/v1.png)
+
+![image]({{ site.baseurl }}/assets/v2.png)
+
+![image]({{ site.baseurl }}/assets/v3.png)
+
+The overall shape seems sensible, although the rough
 
 
 
