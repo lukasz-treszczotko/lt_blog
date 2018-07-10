@@ -1,6 +1,6 @@
 ---
 permalink: /machine_learning/vae/
-categories: Probability, Machine Learning
+categories: "Probability" "Machine Learning"
 
 ---
 
@@ -15,17 +15,81 @@ deterministic function {% raw %} $$ f(t,u,a,H) $$ {% endraw %} such that
 
 {% raw %}
 
-$$B^H_t:=int_0^a f(t,u,a,H)dW_u$$
+$$B^H_t:=\int_0^a f(t,u,a,H)dW_u$$
 
 {% endraw %}
 
 is a fractional Brownian motion with Hurst coefficient {% raw %}
-$$ H $$ {% endraw %}. This suggests that, at list in principle Variational
+$$ H $$ {% endraw %}. This suggests that, at least in principle Variational
 Autoencoders can be used to provide a generative model of fBm. The idea is to
 to encode the paths of the stochastic process (in this case - fBM) onto the
 latant variable space that is a discretized version of a standard Brownian
 motion. In the simple setting here, let a neural network with two hidden
 layers learn the latent representation.
+
+ENCODER DECODER
+
+The encoder-decoder structure we use is relatively simple. The encoder is
+standard.
+
+{% highlight python %}
+def make_encoder(data, code_size, scope='encoder'):
+    with tf.name_scope('encoder'):
+        h_1 = tf.layers.dense(data, hidden_size, activation=tf.nn.relu, name='hidden_1')
+        h_2 = tf.layers.dense(h_1, hidden_size, tf.nn.relu, name='hidden_2')
+        loc = tf.layers.dense(h_2, code_size, name='loc')
+        scale = tf.layers.dense(h_2, code_size, tf.nn.softplus)
+        return tfd.MultivariateNormalDiag(loc, scale)
+{% endhighlight %}
+
+The prior (latent structure) is given by a standard multivariate normal
+distribution.
+
+{% highlight python %}
+def make_prior(code_size):
+    with tf.name_scope('prior'):
+        loc = tf.zeros(code_size)
+        scale = tf.ones(code_size)
+        return tfd.MultivariateNormalDiag(loc, scale)
+{% endhighlight %}
+
+The decoder is again a neural network which learns both mean and diagonal
+variance (it appears to do much worse if diagonal variance is set to
+a multiple of some hyperparameter).
+
+{% highlight python %}
+def make_decoder(code, data_shape):
+      with tf.name_scope('decoder'):
+
+          h_1 = tf.layers.dense(code, hidden_size, tf.nn.relu, name='hidden_1')
+          h_2 = tf.layers.dense(h_1, hidden_size, tf.nn.relu, name='hidden_2')
+
+          loc = tf.layers.dense(h_2, np.prod(data_shape), name='loc')
+          scale = tf.layers.dense(h_2, np.prod(data_shape),
+                                  activation=tf.nn.sigmoid,
+                                  name='scale',
+                                  use_bias=False)
+          return tfd.MultivariateNormalDiag(loc=loc,
+                                            scale_diag=scale)
+{% endhighlight %}
+
+The loss we are trying to minimize is the standard -ELBO. After training we
+can generate samples very easily.
+
+{% highlight python %}
+def sample_generator():
+    with tf.Session() as sess:
+
+        code_sample = sess.run(prior.sample())
+        saver.restore(sess, "./version_" + str(version))
+        code_sample = np.expand_dims(code_sample, axis=0)
+        generated_sample = sess.run(reconstructed_version,
+                                    feed_dict={code: code_sample})
+    return np.squeeze(generated_sample)
+{% endhighlight %}
+
+Whole code can be seen [here](https://github.com/lukasz-treszczotko/GNE/blob/master/fbm_sota.py).
+
 
 
 
