@@ -1,6 +1,6 @@
 ---
 permalink: /machine_learning/vae/
-categories:[Machine Learning, Probability]
+categories: [Machine Learning, Probability]
 
 ---
 
