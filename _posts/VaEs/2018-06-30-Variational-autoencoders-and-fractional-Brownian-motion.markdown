@@ -98,7 +98,9 @@ set to prevent overfitting).
 
 ![image]({{ site.baseurl }}/assets/v3.png)
 
-The overall shape seems sensible, although the rough
+The overall shape seems sensible, although the rough nature of paths of fBm is
+not recovered, which is not surprising, given that in general VAEs seem to
+make everything a bit "blurry".
 
 
 
